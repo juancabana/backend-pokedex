@@ -1,10 +1,13 @@
+import sequelize from "../libs/sequelize.js";
+
 class PokemonService {
   constructor() {}
   async createPokemon(pokemon) {
     return { message: "Create pokemon" };
   }
   async findAll() {
-    return { message: "Get all pokemons" };
+    const pokemons = await sequelize.models.pokemon.findAll();
+    return pokemons;
   }
   async findById(id) {
     return { message: `Get pokemon by ID - ${id}` };

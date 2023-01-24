@@ -5,7 +5,7 @@ const service = new PokemonService();
 const router = express.Router();
 
 // Create pokemon
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   try {
     const { data } = req.params;
     const newPokemon = await service.createPokemon(data);
@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
 });
 
 // Get all pokemons
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
     const pokemons = await service.findAll();
     res.json(pokemons);
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 // Get pokemon by ID
-router.get("/id/:id", async (req, res) => {
+router.get("/id/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const pokemon = await service.findById(id);
@@ -35,7 +35,7 @@ router.get("/id/:id", async (req, res) => {
   }
 });
 // Get pokemon by name
-router.get("/name/:name", async (req, res) => {
+router.get("/name/:name", async (req, res, next) => {
   try {
     const { name } = req.params;
     const pokemon = await service.findByName(name);
@@ -45,7 +45,7 @@ router.get("/name/:name", async (req, res) => {
   }
 });
 // Get pokemon by ability
-router.get("/ability/:ability", async (req, res) => {
+router.get("/ability/:ability", async (req, res, next) => {
   try {
     const { ability } = req.params;
     const pokemon = await service.findByAbility(ability);
@@ -55,7 +55,7 @@ router.get("/ability/:ability", async (req, res) => {
   }
 });
 // Get pokemon by weight
-router.get("/weight/:weight", async (req, res) => {
+router.get("/weight/:weight", async (req, res, next) => {
   try {
     const { weight } = req.params;
     const pokemon = await service.findByWeight(weight);
@@ -65,7 +65,7 @@ router.get("/weight/:weight", async (req, res) => {
   }
 });
 // Get pokemon by speed
-router.get("/speed/:speed", async (req, res) => {
+router.get("/speed/:speed", async (req, res, next) => {
   try {
     const { speed } = req.params;
     const pokemon = await service.findBySpeed(speed);
@@ -75,7 +75,7 @@ router.get("/speed/:speed", async (req, res) => {
   }
 });
 // Get pokemon by attack
-router.get("/attack/:attack", async (req, res) => {
+router.get("/attack/:attack", async (req, res, next) => {
   try {
     const { attack } = req.params;
     const pokemon = await service.findByAttack(attack);
@@ -85,7 +85,7 @@ router.get("/attack/:attack", async (req, res) => {
   }
 });
 // Get pokemon by defense
-router.get("/defense/:defense", async (req, res) => {
+router.get("/defense/:defense", async (req, res, next) => {
   try {
     const { defense } = req.params;
     const pokemon = await service.findByDefense(defense);
@@ -95,7 +95,7 @@ router.get("/defense/:defense", async (req, res) => {
   }
 });
 // Get pokemon by category
-router.get("/category/:category", async (req, res) => {
+router.get("/category/:category", async (req, res, next) => {
   try {
     const { category } = req.params;
     const pokemon = await service.findByCategory(category);
