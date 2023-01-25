@@ -24,7 +24,10 @@ router.post(
     const body = req.body;
     try {
       const newPokemon = await service.createPokemon(body);
-      res.json(newPokemon);
+      res.json({
+        success: true,
+        newPokemon,
+      });
     } catch (error) {
       next(error);
     }
@@ -35,7 +38,8 @@ router.post(
 router.get("/", async (req, res, next) => {
   try {
     const pokemons = await service.findAll();
-    res.json(pokemons); 
+
+    res.json({ success: true, pokemons });
   } catch (error) {
     next(error);
   }
@@ -48,7 +52,7 @@ router.get(
     try {
       const { id } = req.params;
       const pokemon = await service.findById(id);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       // throw new Error(error)
       next(error);
@@ -63,7 +67,7 @@ router.get(
     try {
       const { name } = req.params;
       const pokemon = await service.findByName(name);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       next(error);
     }
@@ -77,7 +81,7 @@ router.get(
     try {
       const { ability } = req.params;
       const pokemon = await service.findByAbility(ability);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       next(error);
     }
@@ -91,7 +95,7 @@ router.get(
     try {
       const { weight } = req.params;
       const pokemon = await service.findByWeight(weight);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       next(error);
     }
@@ -105,7 +109,7 @@ router.get(
     try {
       const { speed } = req.params;
       const pokemon = await service.findBySpeed(speed);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       next(error);
     }
@@ -119,7 +123,7 @@ router.get(
     try {
       const { attack } = req.params;
       const pokemon = await service.findByAttack(attack);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       next(error);
     }
@@ -133,7 +137,7 @@ router.get(
     try {
       const { defense } = req.params;
       const pokemon = await service.findByDefense(defense);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       next(error);
     }
@@ -147,7 +151,7 @@ router.get(
     try {
       const { category } = req.params;
       const pokemon = await service.findByCategory(category);
-      res.json(pokemon);
+      res.json({ success: true, pokemon });
     } catch (error) {
       next(error);
     }

@@ -1,4 +1,5 @@
 import sequelize from "../libs/sequelize.js";
+import boom from '@hapi/boom'
 
 class PokemonService {
   constructor() {}
@@ -14,6 +15,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { id: id },
     });
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 
@@ -21,7 +25,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { name: name },
     });
-
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 
@@ -29,6 +35,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { ability: ability },
     });
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 
@@ -36,6 +45,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { weight: weight },
     });
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 
@@ -43,6 +55,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { speed: speed },
     });
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 
@@ -50,6 +65,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { attack: attack },
     });
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 
@@ -57,6 +75,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { defense: defense },
     });
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 
@@ -64,6 +85,9 @@ class PokemonService {
     const pokemon = await sequelize.models.pokemon.findOne({
       where: { category: category },
     });
+    if (!pokemon) {
+      throw boom.notFound('Pokemon not found');
+    }
     return pokemon;
   }
 }
