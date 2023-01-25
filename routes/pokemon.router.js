@@ -1,5 +1,19 @@
 import express from "express";
 import PokemonService from "../services/pokemon.service.js";
+import validatorHandler from "./../middlewares/validator.handler.js";
+import {
+  idPokemonSchema,
+  createPokemonSchema,
+  abilityPokemonSchema,
+  attackPokemonSchema,
+  categoryPokemonSchema,
+  defensePokemonSchema,
+  descriptionPokemonSchema,
+  imagePokemonSchema,
+  namePokemonSchema,
+  speedPokemonSchema,
+  weightPokemonSchema,
+} from "./../schemas/pokemon.schema.js";
 
 const service = new PokemonService();
 const router = express.Router();
@@ -25,84 +39,117 @@ router.get("/", async (req, res, next) => {
   }
 });
 // Get pokemon by ID
-router.get("/id/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const pokemon = await service.findById(id);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/id/:id",
+  validatorHandler(idPokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const pokemon = await service.findById(id);
+      res.json(pokemon);
+    } catch (error) {
+      // throw new Error(error)
+      next(error);
+    }
   }
-});
+);
 // Get pokemon by name
-router.get("/name/:name", async (req, res, next) => {
-  try {
-    const { name } = req.params;
-    const pokemon = await service.findByName(name);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/name/:name",
+  validatorHandler(namePokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { name } = req.params;
+      const pokemon = await service.findByName(name);
+      res.json(pokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 // Get pokemon by ability
-router.get("/ability/:ability", async (req, res, next) => {
-  try {
-    const { ability } = req.params;
-    const pokemon = await service.findByAbility(ability);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/ability/:ability",
+  validatorHandler(abilityPokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { ability } = req.params;
+      const pokemon = await service.findByAbility(ability);
+      res.json(pokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 // Get pokemon by weight
-router.get("/weight/:weight", async (req, res, next) => {
-  try {
-    const { weight } = req.params;
-    const pokemon = await service.findByWeight(weight);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/weight/:weight",
+  validatorHandler(weightPokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { weight } = req.params;
+      const pokemon = await service.findByWeight(weight);
+      res.json(pokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 // Get pokemon by speed
-router.get("/speed/:speed", async (req, res, next) => {
-  try {
-    const { speed } = req.params;
-    const pokemon = await service.findBySpeed(speed);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/speed/:speed",
+  validatorHandler(speedPokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { speed } = req.params;
+      const pokemon = await service.findBySpeed(speed);
+      res.json(pokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 // Get pokemon by attack
-router.get("/attack/:attack", async (req, res, next) => {
-  try {
-    const { attack } = req.params;
-    const pokemon = await service.findByAttack(attack);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/attack/:attack",
+  validatorHandler(attackPokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { attack } = req.params;
+      const pokemon = await service.findByAttack(attack);
+      res.json(pokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 // Get pokemon by defense
-router.get("/defense/:defense", async (req, res, next) => {
-  try {
-    const { defense } = req.params;
-    const pokemon = await service.findByDefense(defense);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/defense/:defense",
+  validatorHandler(defensePokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { defense } = req.params;
+      const pokemon = await service.findByDefense(defense);
+      res.json(pokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 // Get pokemon by category
-router.get("/category/:category", async (req, res, next) => {
-  try {
-    const { category } = req.params;
-    const pokemon = await service.findByCategory(category);
-    res.json(pokemon);
-  } catch (error) {
-    next(error);
+router.get(
+  "/category/:category",
+  validatorHandler(categoryPokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { category } = req.params;
+      const pokemon = await service.findByCategory(category);
+      res.json(pokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 export default router;

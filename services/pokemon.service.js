@@ -10,35 +10,60 @@ class PokemonService {
     return pokemons;
   }
   async findById(id) {
-    return { message: `Get pokemon by ID - ${id}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { id: id },
+    });
+    return pokemon;
   }
 
   async findByName(name) {
-    return { message: `Get pokemon by name - ${name}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { name: name },
+    });
+
+    return pokemon;
   }
 
   async findByAbility(ability) {
-    return { message: `Get pokemon by ability - ${ability}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { ability: ability },
+    });
+    return pokemon;
   }
 
   async findByWeight(weight) {
-    return { message: `Get pokemon by weight - ${weight}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { weight: weight },
+    });
+    return pokemon;
   }
 
   async findBySpeed(speed) {
-    return { message: `Get pokemon by speed - ${speed}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { speed: speed },
+    });
+    return pokemon;
   }
 
   async findByAttack(attack) {
-    return { message: `Get pokemon by attack - ${attack}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { attack: attack },
+    });
+    return pokemon;
   }
 
   async findByDefense(defense) {
-    return { message: `Get pokemon by defense - ${defense}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { defense: defense },
+    });
+    return pokemon;
   }
 
   async findByCategory(category) {
-    return { message: `Get pokemon by category - ${category}` };
+    const pokemon = await sequelize.models.pokemon.findOne({
+      where: { category: category },
+    });
+    return pokemon;
   }
 }
 
