@@ -12,7 +12,6 @@ const category = Joi.string().alphanum().min(3).max(30);
 const image = Joi.string();
 
 export const createPokemonSchema = Joi.object({
-  id: id.required(),
   name: name.required(),
   description: description.required(),
   ability: ability.required(),
@@ -29,9 +28,6 @@ export const idPokemonSchema = Joi.object({
 });
 export const namePokemonSchema = Joi.object({
   name: name.required(),
-});
-export const descriptionPokemonSchema = Joi.object({
-  description: description.required(),
 });
 export const abilityPokemonSchema = Joi.object({
   ability: ability.required(),
@@ -50,7 +46,4 @@ export const defensePokemonSchema = Joi.object({
 });
 export const categoryPokemonSchema = Joi.object({
   category: category.required(),
-});
-export const imagePokemonSchema = Joi.object({
-  image: image.required(),
 });

@@ -8,8 +8,6 @@ import {
   attackPokemonSchema,
   categoryPokemonSchema,
   defensePokemonSchema,
-  descriptionPokemonSchema,
-  imagePokemonSchema,
   namePokemonSchema,
   speedPokemonSchema,
   weightPokemonSchema,
@@ -19,21 +17,25 @@ const service = new PokemonService();
 const router = express.Router();
 
 // Create pokemon
-router.post("/", async (req, res, next) => {
-  try {
-    const { data } = req.params;
-    const newPokemon = await service.createPokemon(data);
-    res.json(newPokemon);
-  } catch (error) {
-    next(error);
+router.post(
+  "/",
+  validatorHandler(createPokemonSchema, "body"),
+  async (req, res, next) => {
+    const body = req.body;
+    try {
+      const newPokemon = await service.createPokemon(body);
+      res.json(newPokemon);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 // Get all pokemons
 router.get("/", async (req, res, next) => {
   try {
     const pokemons = await service.findAll();
-    res.json(pokemons);
+    res.json(pokemons); 
   } catch (error) {
     next(error);
   }

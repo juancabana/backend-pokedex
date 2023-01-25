@@ -2,8 +2,9 @@ import sequelize from "../libs/sequelize.js";
 
 class PokemonService {
   constructor() {}
-  async createPokemon(pokemon) {
-    return { message: "Create pokemon" };
+  async createPokemon(data) {
+    const newPokemon = await sequelize.models.pokemon.create(data)
+    return newPokemon;
   }
   async findAll() {
     const pokemons = await sequelize.models.pokemon.findAll();
