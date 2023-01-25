@@ -5,8 +5,6 @@ dotenv.config()
 
 const URI = process.env.DB_URI
 
-console.log(URI)
-
 // Conexion with database
 // Pool and sequelize (ORM)
 const sequelize = new Sequelize(URI, {
