@@ -12,23 +12,23 @@ class PokemonService {
     return pokemons;
   }
   async findById(id) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findOne({
       where: { id: id },
     });
-    if (!pokemon) {
+    if (!pokemons) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return [pokemons];
   }
 
   async findByName(name) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findOne({
       where: { name: name },
     });
-    if (!pokemon) {
+    if (!pokemons) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return [pokemons];
   }
 
   async findByAbility(ability) {

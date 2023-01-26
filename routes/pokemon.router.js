@@ -52,8 +52,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const pokemon = await service.findById(id);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findById(id);
+      res.json({ success: true, pokemons });
     } catch (error) {
       // throw new Error(error)
       next(error);
@@ -67,8 +67,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { name } = req.params;
-      const pokemon = await service.findByName(name);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findByName(name);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
@@ -165,8 +165,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { category } = req.params;
-      const pokemon = await service.findByCategory(category);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findByCategory(category);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
