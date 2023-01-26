@@ -81,8 +81,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { ability } = req.params;
-      const pokemon = await service.findByAbility(ability);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findByAbility(ability);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
@@ -95,8 +95,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { weight } = req.params;
-      const pokemon = await service.findByWeight(weight);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findByWeight(weight);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
@@ -109,8 +109,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { height } = req.params;
-      const pokemon = await service.findByHeight(height);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findByHeight(height);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
@@ -123,8 +123,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { speed } = req.params;
-      const pokemon = await service.findBySpeed(speed);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findBySpeed(speed);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
@@ -137,8 +137,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { attack } = req.params;
-      const pokemon = await service.findByAttack(attack);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findByAttack(attack);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
@@ -151,8 +151,8 @@ router.get(
   async (req, res, next) => {
     try {
       const { defense } = req.params;
-      const pokemon = await service.findByDefense(defense);
-      res.json({ success: true, pokemon });
+      const pokemons = await service.findByDefense(defense);
+      res.json({ success: true, pokemons });
     } catch (error) {
       next(error);
     }
