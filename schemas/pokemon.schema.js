@@ -5,6 +5,7 @@ const name = Joi.string().alphanum().min(3).max(50);
 const description = Joi.string();
 const ability = Joi.string().alphanum().min(3).max(30);
 const weight = Joi.number().integer().positive();
+const height = Joi.number().integer().positive();
 const speed = Joi.number().integer().positive();
 const attack = Joi.number().integer().positive();
 const defense = Joi.number().integer().positive();
@@ -16,6 +17,7 @@ export const createPokemonSchema = Joi.object({
   description: description.required(),
   ability: ability.required(),
   weight: weight.required(),
+  height: height.required(),
   speed: speed.required(),
   attack: attack.required(),
   defense: defense.required(),
@@ -34,6 +36,9 @@ export const abilityPokemonSchema = Joi.object({
 });
 export const weightPokemonSchema = Joi.object({
   weight: weight.required(),
+});
+export const heightPokemonSchema = Joi.object({
+  height: weight.required(),
 });
 export const speedPokemonSchema = Joi.object({
   speed: speed.required(),

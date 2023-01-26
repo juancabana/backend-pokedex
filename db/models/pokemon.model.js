@@ -26,6 +26,10 @@ export const PokemonSchema = {
     allowNull: false,
     type: DataTypes.INTEGER,
   },
+  height: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+  },
   speed: {
     allowNull: false,
     type: DataTypes.INTEGER,

@@ -11,6 +11,7 @@ import {
   namePokemonSchema,
   speedPokemonSchema,
   weightPokemonSchema,
+  heightPokemonSchema,
 } from "./../schemas/pokemon.schema.js";
 
 const service = new PokemonService();
@@ -95,6 +96,20 @@ router.get(
     try {
       const { weight } = req.params;
       const pokemon = await service.findByWeight(weight);
+      res.json({ success: true, pokemon });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+// Get pokemon by height
+router.get(
+  "/height/:height",
+  validatorHandler(heightPokemonSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { height } = req.params;
+      const pokemon = await service.findByHeight(height);
       res.json({ success: true, pokemon });
     } catch (error) {
       next(error);

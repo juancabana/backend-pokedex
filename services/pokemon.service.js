@@ -32,63 +32,72 @@ class PokemonService {
   }
 
   async findByAbility(ability) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findAll({
       where: { ability: ability },
     });
-    if (!pokemon) {
+    if (pokemons.length === 0) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return pokemons;
   }
 
   async findByWeight(weight) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findAll({
       where: { weight: weight },
     });
-    if (!pokemon) {
+    if (pokemons.length === 0) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return pokemons;
+  }
+  async findByHeight(height) {
+    const pokemons = await sequelize.models.pokemon.findAll({
+      where: { height: height },
+    });
+    if (pokemons.length === 0) {
+      throw boom.notFound('Pokemon not found');
+    }
+    return pokemons;
   }
 
   async findBySpeed(speed) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findAll({
       where: { speed: speed },
     });
-    if (!pokemon) {
+    if (pokemons.length === 0) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return pokemons;
   }
 
   async findByAttack(attack) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findAll({
       where: { attack: attack },
     });
-    if (!pokemon) {
+    if (pokemons.length === 0) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return pokemons;
   }
 
   async findByDefense(defense) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findAll({
       where: { defense: defense },
     });
-    if (!pokemon) {
+    if (pokemons.length === 0) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return pokemons;
   }
 
   async findByCategory(category) {
-    const pokemon = await sequelize.models.pokemon.findOne({
+    const pokemons = await sequelize.models.pokemon.findAll({
       where: { category: category },
     });
-    if (!pokemon) {
+    if (pokemons.length === 0) {
       throw boom.notFound('Pokemon not found');
     }
-    return pokemon;
+    return pokemons;
   }
 }
 
